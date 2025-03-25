@@ -131,7 +131,7 @@ One way to solve this is by projecting the result onto $X$ at each iteration:
 
 We get a **projected gradient descent algorithm**:
 
-$*x_{t+1} = \text{Proj}_X(x_t - \eta \nabla f(x_t))*$
+$x_{t+1} = \text{Proj}_X(x_t - \eta \nabla f(x_t))$
 
 or similarly, a **projected subgradient method**:
 
@@ -147,9 +147,7 @@ By repeating the same proof for subgradient method convergence with minor change
 
 Note that 
 
-$$
-\min_x f(x) \text{ s.t. } x\in X \iff \min_x f(x) + I_X(x) 
-$$
+$\min_x f(x) \text{ s.t. } x\in X \iff \min_x f(x) + I_X(x) $
 
 where $I_X(x)=\infty\cdot(1_{x\not\in X})$ is the indicator of the set $X$.
 
@@ -159,11 +157,11 @@ So projected GD can be replaced with subgradient algorithm on the composite func
 
 We can write 
 
-$$
+$
 \text{Proj}_X(u)
 =\arg\min_x\frac{1}{2}||x-u||_2^2 \text{  s.t. }x\in X \\ 
 = \arg\min_x I_X(x)+\frac{1}{2}||x-u||_2^2
-$$
+$
 
 i.e. we approximate $u$ while still staying in $X$. So projected GD can be written as two optimization problems, and since we have an “easy” form for the projection, we can use it inside the GD:
 
