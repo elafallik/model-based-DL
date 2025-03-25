@@ -161,8 +161,8 @@ We can write
 
 $$
 \text{Proj}_X(u)
-&=\arg\min_x\frac{1}{2}||x-u||_2^2 \text{  s.t. }x\in X \\ 
-&= \arg\min_x I_X(x)+\frac{1}{2}||x-u||_2^2
+=\arg\min_x\frac{1}{2}||x-u||_2^2 \text{  s.t. }x\in X \\ 
+= \arg\min_x I_X(x)+\frac{1}{2}||x-u||_2^2
 $$
 
 i.e. we approximate $u$ while still staying in $X$. So projected GD can be written as two optimization problems, and since we have an “easy” form for the projection, we can use it inside the GD:
