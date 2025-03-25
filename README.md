@@ -157,11 +157,9 @@ So projected GD can be replaced with subgradient algorithm on the composite func
 
 We can write 
 
-$
-\text{Proj}_X(u)
-=\arg\min_x\frac{1}{2}||x-u||_2^2 \text{  s.t. }x\in X \\ 
-= \arg\min_x I_X(x)+\frac{1}{2}||x-u||_2^2
-$
+$\text{Proj}_X(u)$
+$=\arg\min_x\frac{1}{2}||x-u||_2^2 \text{  s.t. }x\in X$
+$= \arg\min_x I_X(x)+\frac{1}{2}||x-u||_2^2$
 
 i.e. we approximate $u$ while still staying in $X$. So projected GD can be written as two optimization problems, and since we have an “easy” form for the projection, we can use it inside the GD:
 
@@ -197,32 +195,30 @@ This is particularly useful where $f,h$ are convex, $f$ is smooth and $h$ is not
 
 What is the proximal operator of $h(x)=||x||_1$? First, we can maximize for each $x_i$ separately. We get:
 
-$$
-\begin{align*} 
-x = \text{Prox}_{\eta h}(u) 
-&\iff \forall_i, x_i = \arg\min_{x_i} |x_i| +\frac{1}{2\eta}(u_i - x_i)^2 \\
-&\iff 
+
+$x = \text{Prox}_{\eta h}(u) \iff \forall_i, x_i = \arg\min_{x_i} |x_i| +\frac{1}{2\eta}(u_i - x_i)^2$
+
+$$\iff 
 \begin{cases}
 1 -\frac{1}{\eta}(u_i - x_i)= 0, & x_i > 0 \\
 - 1 -\frac{1}{\eta}(u_i - x_i)= 0, & x_i < 0 \\
 x_i = 0 & \text{else}
-\end{cases} \\
-&\iff 
+\end{cases}$$
+
+$\iff 
 x_i = \begin{cases}
 u_i - \eta, & x_i > 0 \\
 u_i + \eta, & x_i < 0\\
 0 & \text{else}
-\end{cases}\\
-&\iff 
+\end{cases}$
+$\iff 
 x_i = \begin{cases}
 u_i - \eta, & u_i > \eta \\
 u_i + \eta, & u_i < -\eta \\
 0 & \text{else}
-\end{cases}\\
-&\iff 
-x_i = \text{sign}(u_i)\cdot \max(|u_i|-\eta, 0) 
-\end{align*}
-$$
+\end{cases}$
+$\iff 
+x_i = \text{sign}(u_i)\cdot \max(|u_i|-\eta, 0)$
 
 This function is a soft thresholding of $\eta$ - everything bigger than $\eta$ or smaller than $-\eta$ is pulled toward 0 by $\eta$, and everything within $\eta$ of 0 becomes 0: 
 
